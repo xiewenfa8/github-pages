@@ -1,1 +1,111 @@
-new projec
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spesial Buat Kamu ❤️</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #ffe6e6;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 500px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #d63384;
+        }
+        p {
+            font-size: 18px;
+            color: #333;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            background-color: #ff4d79;
+            color: white;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+        button:hover {
+            background-color: #d63384;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Hai Kamu! ❤️</h1>
+        <p>Aku punya beberapa pertanyaan nih buat kamu...</p>
+        <button onclick="mulai()">Mulai!</button>
+        
+        <div id="pertanyaan1" class="hidden">
+            <p>1. Apa kegiatan favoritmu akhir-akhir ini? 😊</p>
+            <input type="text" id="jawaban1">
+            <button onclick="lanjut(2)">Lanjut</button>
+        </div>
+
+        <div id="pertanyaan2" class="hidden">
+            <p>2. Kalau bisa liburan ke mana aja, kamu mau ke mana? ✈️</p>
+            <input type="text" id="jawaban2">
+            <button onclick="lanjut(3)">Lanjut</button>
+        </div>
+
+        <div id="pertanyaan3" class="hidden">
+            <p>3. Kalau disuruh pilih, lebih suka makan di restoran mewah atau di tempat sederhana tapi romantis? 🍽️</p>
+            <input type="text" id="jawaban3">
+            <button onclick="lanjut(4)">Lanjut</button>
+        </div>
+
+        <div id="rayuan" class="hidden">
+            <p>Aku udah tahu jawabannya... 😍</p>
+            <p>Apapun aktivitasmu, ke mana pun kamu mau pergi, dan di mana pun kita makan...</p>
+            <p>Yang penting **aku bisa ada di sampingmu** ❤️</p>
+            <h2>Jadi... maukah kamu jadi pacarku? 🥰</h2>
+            <button onclick="jawab('ya')">Ya</button>
+            <button onclick="jawab('tidak')">Tidak</button>
+        </div>
+
+        <p id="hasil"></p>
+    </div>
+
+    <script>
+        function mulai() {
+            document.querySelector("button").style.display = "none";
+            document.getElementById("pertanyaan1").classList.remove("hidden");
+        }
+
+        function lanjut(no) {
+            document.getElementById("pertanyaan" + (no - 1)).classList.add("hidden");
+            document.getElementById("pertanyaan" + no).classList.remove("hidden");
+            if (no === 4) {
+                document.getElementById("pertanyaan3").classList.add("hidden");
+                document.getElementById("rayuan").classList.remove("hidden");
+            }
+        }
+
+        function jawab(jawaban) {
+            if (jawaban === "ya") {
+                document.getElementById("hasil").innerHTML = "🎉 Yay! Aku bahagia banget! 💖";
+            } else {
+                document.getElementById("hasil").innerHTML = "😢 Sedih... tapi aku tetap sayang kamu!";
+            }
+            document.getElementById("rayuan").classList.add("hidden");
+        }
+    </script>
+
+</body>
+</html>
